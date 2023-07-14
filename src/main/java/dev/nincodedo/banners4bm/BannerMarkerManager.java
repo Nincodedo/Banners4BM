@@ -53,11 +53,13 @@ public class BannerMarkerManager {
     }
 
     public void saveMarkers() {
-        BlueMapAPI.getInstance().ifPresent(blueMapAPI -> blueMapAPI.getMaps().forEach(blueMapMap -> blueMapMap.getMarkerSets().forEach((s, markerSet) -> {
-            try (FileWriter writer = new FileWriter(markerJsonFileName)) {
-                MarkerGson.INSTANCE.toJson(markerSet, writer);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        BlueMapAPI.getInstance().ifPresent(blueMapAPI -> blueMapAPI.getMaps().forEach(blueMapMap -> blueMapMap.getMarkerSets().forEach((id, markerSet) -> {
+            if (id != null && id.equals(bannerMarkerSetId)) {
+                try (FileWriter writer = new FileWriter(markerJsonFileName)) {
+                    MarkerGson.INSTANCE.toJson(markerSet, writer);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         })));
     }
