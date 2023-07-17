@@ -105,5 +105,4 @@ public class BannerMarkerManager {
         POIMarker bannerMarker = POIMarker.builder().label(blockName).position(x, y, z).icon(iconAddress, 0, 0).build();
         existingBannerMarkerSet.put(blockPos.toShortString(), bannerMarker);
     }
-
 }

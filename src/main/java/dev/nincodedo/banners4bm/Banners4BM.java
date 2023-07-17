@@ -35,7 +35,6 @@ public class Banners4BM implements ModInitializer {
                 bannerMapIcons.loadMapIcons(blueMapAPI);
             });
         });
-
         BlueMapAPI.onDisable(blueMapAPI -> {
             LOGGER.info("Stopping Banners4BM");
             bannerMarkerManager.saveMarkers();
@@ -46,7 +45,6 @@ public class Banners4BM implements ModInitializer {
                 bannerMarkerManager.removeMarker(blockEntity);
             }
         });
-
     }
 
     private ActionResult mapBannerInteraction(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
